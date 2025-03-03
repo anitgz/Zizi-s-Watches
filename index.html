@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zizi's watches </title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>      
+</head>
+<body>
+    <header>    
+        <section class="product-intro">
+            <h2 class="title">About Zizi's Watches:</h2>
+            <p class="description">Zizi's Watch is the perfect place to find stylish, high-quality watches at affordable prices, offering the ideal choice for those who appreciate elegance and sophistication.</p>
+        </section>
+        <div class="top-banner">
+            <div class="logo-social-wrapper">
+                <div class="menu-container">
+                    <button class="menu-button" onclick="toggleMenu()">☰</button>
+                    <div class="menu-content" id="dropdownMenu">
+                        <a href="#" onclick="filterProducts('Home')">Home</a>
+                        <a href="#" onclick="filterProducts('all')">All Products</a>
+                        <a href="#" onclick="filterProducts('in-stock')">In stock</a>
+                        <a href="#" onclick="filterProducts('sold-out')">Sold out</a>
+                    </div>
+                </div>
+                <div class="logo">🎉 15% discount with domestic banks's payment, paypal!</div>
+                <div class="social-links">
+                    <!-- Tooltip with phone icon -->
+                    <div class="tooltip">
+                        <label for="contactPopup">
+                            <img src="phone.png" alt="Phone" class="icon">
+                        </label>
+                        <span class="tooltip-text">For Vietnamese:</span>
+                    </div>
+                    
+                    <!-- Popup container -->
+                    <input type="checkbox" id="contactPopup" class="popup-toggle">
+                    <div class="popup">
+                        <div class="popup-content">
+                            <label for="contactPopup" class="close-btn">×</label>
+                            <h2>Contact Information</h2>
+                            <p><strong>Phone:</strong> +84337601775</p>
+                            <div class="contact-links">
+                                <span><strong>Chat on:</strong></span>
+                                <a href="https://zalo.me/84337601775" target="_blank">Zalo</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.instagram.com/ziziwatch.sg/" target="_blank">
+                        <img src="instagram.png" alt="Instagram" class="icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <style>
+            .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .menu-container {
+    position: relative; /* Giữ menu bên trong nút bấm */
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    z-index: 1000;
+}
+
+/* Nút menu */
+.menu-button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1000; /* Đảm bảo nút menu nằm trên */
+}
+
+/* Menu dropdown */
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Hiển thị ngay bên dưới nút */
+    left: 0;
+    width: 200px;
+    background-color: #333;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 9999; /* Đảm bảo menu hiển thị trên tất cả */
+}
+
+/* Khi menu được hiển thị */
+.show-menu {
+    display: block;
+}
+
+/* Các mục trong menu */
+.menu-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #555;
+    white-space: nowrap;
+}
+
+.menu-content a:hover {
+    background-color: #575757;
+}
+
+        </style>
+    </header>
+
+    <main>
+        <section class="product-grid">
+            <div class="product-card" data-category="in-stock" onclick="openModal('product1')">
+                <img src="z6065221898282_b35ab1c220bf60193ab9755d45eb63bc.jpg" alt="Luxury's Watch">
+                <h2>Oakley Bullet watch</h2>
+                <p>Released year : 2001</p>
+                <p>Size : 51/62mm</p>
+                <p>Free gift: Oakley glasses - Oakley box + Reflective sapphire glass, with calendar window</p>
+                <h1>$340</h1>
+            </div>
+        </div>
+        <div class="product-card" data-category="sold-out" onclick="openModal('product2')">
+            <img src="z6065229339835_d24c54d7ad2c217af2f3ab6ca0f8d263.jpg" alt="Luxury's Watch">
+            <h2>Fossil Kanji watch</h2>
+            <p>Size : 37mm</p>
+            <h1>$Sold out</h1>
+        </div>
+        <div class="product-card" onclick="openModal('product3')">
+            <img src="z6065233187533_d6482177d3c7b797875c3b7bea4f5ca8.jpg" alt="Luxury's Watch">
+            <h2>Fossil Bigtic watch</h2>
+            <p>Size : 32mm</p>
+            <h1>$Sold out</h1>
+        </div>
+        <div class="product-card" onclick="openModal('product4')">
+            <img src="z6065235398156_c4a595b3f577f461c8507f7b12d40dc5.jpg" alt="Luxury's Watch">
+            <h2>Fossil Bigtic watch</h2>
+            <p>Size : 37mm</p>
+            <h1>$Sold out</h1>
+        </div>
+        <div class="product-card" onclick="openModal('product5')">
+            <img src="z6081795519204_abf9186420aa53b5981d8e10cf7e4a6b.jpg" alt="Luxury's Wacth">
+            <h2>Nike Triax armored vintage</h2>
+            <h1>$1000</h1>
+        </div>
+        <div class="product-card" onclick="openModal('product6')">
+            <img src="z6081804976222_21e941827f0eabc68620fdec665468d6.jpg" alt="Luxury's Wacth">
+            <h2>Fossil Bigtic Vintage</h2>
+            <p>Cond : good</p>
+            <p>Size : 40mm</p>
+            <h1>$100</h1>
+        </div>
+        <div class="product-card" onclick="openModal('product7')">
+            <img src="z6081812292202_b656ad3133d0d233b494275db741741c.jpg" alt="Luxury's Wacth">
+            <h2>Vintage swatch swiss</h2>
+            <p>Released year : 1993</p>
+            <p>Size : 32mm</p>
+            <h1>$100</h1>
+        </div>
+        <div class="product-card" onclick="openModal('product8')">
+            <img src="z6368725628849_839c91e6c6a41fec38a9676f6039eb80.jpg" alt="Luxury's Wacth">
+            <h2>Pocket Watch</h2>
+            <p>Works well, added new battery</p>
+            <h1>$20</h1>
+        </div>
+        
+        </section>
+    </main>
+
+    <!-- Modal for product images -->
+    <div id="product1" class="modal">
+        <div class="modal-content">
+            <div class="main-image">
+                <img id="mainImage-product1" src="z6065221898282_b35ab1c220bf60193ab9755d45eb63bc.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="z6065221985034_dcb8d355e39538afbd3cfc2410781a37.jpg" alt="Thumbnail 1" onclick="changeMainImage('product1', this.src)">
+                <img class="thumbnail" src="z6065221998170_4ad25f24b37097ff1cbd5f8a36230442.jpg" alt="Thumbnail 2" onclick="changeMainImage('product1', this.src)">
+                <img class="thumbnail" src="z6065222005587_15237c7e22fc61576dff65014fa92cfe.jpg" alt="Thumbnail 3" onclick="changeMainImage('product1', this.src)">
+                <img class="thumbnail" src="z6065222017820_b13180ad95ed09b18f7b1c3a2b20846c.jpg" alt="Thumbnail 4" onclick="changeMainImage('product1', this.src)">
+                <img class="thumbnail" src="z6065221898282_b35ab1c220bf60193ab9755d45eb63bc.jpg" alt="Thumbnail 4" onclick="changeMainImage('product1', this.src)">
+            </div>
+            <a href="https://www.instagram.com/ziziwatch.sg" target="_blank">
+                <button class="instagram-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    Order with Instagram
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="product2" class="modal">
+        <div class="modal-content">
+            <div class="main-image">
+                <img id="mainImage-product2" src="z6065229339835_d24c54d7ad2c217af2f3ab6ca0f8d263.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="z6065229350271_9be0ff5de6934ef561985fbe0c026fe0.jpg" alt="Thumbnail 1" onclick="changeMainImage('product2', this.src)">
+                <img class="thumbnail" src="z6065229360082_a71098967c910f2c7fd6627f681e54df.jpg" alt="Thumbnail 2" onclick="changeMainImage('product2', this.src)">
+                <img class="thumbnail" src="z6065229369547_18ff8d80faf4d9003a3b0f4c2f7c6781.jpg" alt="Thumbnail 3" onclick="changeMainImage('product2', this.src)">
+                <img class="thumbnail" src="z6065229339835_d24c54d7ad2c217af2f3ab6ca0f8d263.jpg" alt="Thumbnail 4" onclick="changeMainImage('product2', this.src)">
+            </div>
+            <a href="https://www.instagram.com/ziziwatch.sg" target="_blank">
+                <button class="instagram-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    Order with Instagram
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="product3" class="modal">
+        <div class="modal-content">
+            <div class="main-image">
+                <img id="mainImage-product3" src="z6065233197259_fd1bd6f3a4cb43349f2bd02642bb108c.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="z6065233187533_d6482177d3c7b797875c3b7bea4f5ca8.jpg" alt="Thumbnail 1" onclick="changeMainImage('product3', this.src)">
+                <img class="thumbnail" src="z6065233204356_f5a0fcff569daa6a3b1f2066c0644be2.jpg" alt="Thumbnail 2" onclick="changeMainImage('product3', this.src)">
+                <img class="thumbnail" src="z6065233197259_fd1bd6f3a4cb43349f2bd02642bb108c.jpg" alt="Thumbnail 3" onclick="changeMainImage('product3', this.src)">
+            </div>
+            <a href="https://www.instagram.com/ziziwatch.sg" target="_blank">
+                <button class="instagram-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    Order with Instagram
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="product4" class="modal">
+        <div class="modal-content">
+            <div class="main-image">
+                <img id="mainImage-product4" src="z6065235398156_c4a595b3f577f461c8507f7b12d40dc5.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="z6065235426979_0cf585ab9291a2efc364c518229b9fc5.jpg" alt="Thumbnail 1" onclick="changeMainImage('product4', this.src)">
+                <img class="thumbnail" src="z6065235419268_bb84ed5d83979b148cb96645f94b6801.jpg" alt="Thumbnail 2" onclick="changeMainImage('product4', this.src)">
+                <img class="thumbnail" src="z6065235424482_50a919c955de5606bfd646dc2f56c3c3.jpg" alt="Thumbnail 3" onclick="changeMainImage('product4', this.src)">
+                <img class="thumbnail" src="z6065235398156_c4a595b3f577f461c8507f7b12d40dc5.jpg" alt="Thumbnail 4" onclick="changeMainImage('product4', this.src)">
+            </div>
+            <a href="https://www.instagram.com/ziziwatch.sg" target="_blank">
+                <button class="instagram-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    Order with Instagram
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="product5" class="modal">
+        <div class="modal-content">
+            <div class="main-image">
+                <img id="mainImage-product5" src="z6081795519204_abf9186420aa53b5981d8e10cf7e4a6b.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="z6081795587845_2075d4153b7badab64118853387c624d.jpg" alt="Thumbnail 1" onclick="changeMainImage('product5', this.src)">
+                <img class="thumbnail" src="z6081795585754_40a184256b3b64aef5bd22f75bbe9854.jpg" alt="Thumbnail 2" onclick="changeMainImage('product5', this.src)">
+                <img class="thumbnail" src="z6081795510489_34a610635446b3e905d6802d981f3168.jpg" alt="Thumbnail 3" onclick="changeMainImage('product5', this.src)">
+                <img class="thumbnail" src="z6081795519204_abf9186420aa53b5981d8e10cf7e4a6b.jpg" alt="Thumbnail 4" onclick="changeMainImage('product5', this.src)">
+            </div>
+            <a href="https://www.instagram.com/ziziwatch.sg" target="_blank">
+                <button class="instagram-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    Order with Instagram
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="product6" class="modal">
+        <div class="modal-content">
+            <div class="main-image">
+                <img id="mainImage-product6" src="z6081804976222_21e941827f0eabc68620fdec665468d6.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="z6081804959712_fb1bd81b30baea5d18c92049b74e9df1.jpg" alt="Thumbnail 1" onclick="changeMainImage('product6', this.src)">
+                <img class="thumbnail" src="z6081804980264_54c033cc3f779df684e889e3e374c01d.jpg" alt="Thumbnail 2" onclick="changeMainImage('product6', this.src)">
+                <img class="thumbnail" src="z6081804964694_2b5440ad202c4b25ce5b4cd9307ad490.jpg" alt="Thumbnail 3" onclick="changeMainImage('product6', this.src)">
+                <img class="thumbnail" src="z6081804976222_21e941827f0eabc68620fdec665468d6.jpg" alt="Thumbnail 4" onclick="changeMainImage('product6', this.src)">
+            </div>
+            <a href="https://www.instagram.com/ziziwatch.sg" target="_blank">
+                <button class="instagram-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    Order with Instagram
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="product7" class="modal">
+        <div class="modal-content">
+            <div class="main-image">
+                <img id="mainImage-product7" src="z6081812292202_b656ad3133d0d233b494275db741741c.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="z6081812299053_4c7d31fe3ebd90a36811ed2a6a4a42e5.jpg" alt="Thumbnail 1" onclick="changeMainImage('product7', this.src)">
+                <img class="thumbnail" src="z6081812306314_1337f43003555a0c1c553117306696af.jpg" alt="Thumbnail 2" onclick="changeMainImage('product7', this.src)">
+                <img class="thumbnail" src="z6081812292202_b656ad3133d0d233b494275db741741c.jpg" alt="Thumbnail 3" onclick="changeMainImage('product7', this.src)">
+            </div>
+            <a href="https://www.instagram.com/ziziwatch.sg" target="_blank">
+                <button class="instagram-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    Order with Instagram
+                </button>
+            </a>
+        </div>
+    </div><div id="product8" class="modal">
+        <div class="modal-content">
+            <div class="main-image">
+                <img id="mainImage-product8" src="z6368725628849_839c91e6c6a41fec38a9676f6039eb80.jpg" alt="Main Image">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="z6368725604600_aeff1ce7aa4723c5cea02bcb0515b789.jpg" alt="Thumbnail 1" onclick="changeMainImage('product8', this.src)">
+                <img class="thumbnail" src="z6368725617958_cfa3ebfe3159266a0d2548d5520dbe54.jpg" alt="Thumbnail 2" onclick="changeMainImage('product8', this.src)">
+                <img class="thumbnail" src="z6368725628849_839c91e6c6a41fec38a9676f6039eb80.jpg" alt="Thumbnail 3" onclick="changeMainImage('product8', this.src)">
+            </div>
+            <a href="https://www.instagram.com/ziziwatch.sg" target="_blank">
+                <button class="instagram-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+                    Order with Instagram
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = "flex";
+                    setTimeout(() => modal.style.opacity = "1", 10); 
+                }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.opacity = "0";
+                    setTimeout(() => modal.style.display = "none", 300); 
+                }
+        }
+
+
+        document.addEventListener("click", function (event) {
+            document.querySelectorAll(".modal").forEach((modal) => {
+                if (event.target === modal) {
+                    closeModal(modal.id);
+                    }
+                });
+            });
+
+
+
+        function changeMainImage(productId, newSrc) {
+            document.getElementById(`mainImage-${productId}`).src = newSrc;
+        }
+        function filterProducts(category) {
+    let products = document.querySelectorAll('.product-card');
+
+    products.forEach(product => {
+        let priceText = product.querySelector("h1").innerText.trim();
+        let isSoldOut = priceText.toLowerCase().includes("sold out");
+        let isInStock = !isNaN(priceText.replace("$", "")); // Kiểm tra xem giá có phải là số không
+
+        if (category === 'all') {
+            product.style.display = 'block';  // Hiển thị tất cả sản phẩm
+        } else if (category === 'sold-out') {
+            product.style.display = isSoldOut ? 'block' : 'none';  // Chỉ hiển thị sản phẩm Sold out
+        } else if (category === 'in-stock') {
+            product.style.display = isInStock ? 'block' : 'none';  // Chỉ hiển thị sản phẩm còn hàng
+        }
+    });
+}
+        function toggleMenu() {
+    let menu = document.getElementById("dropdownMenu");
+    menu.classList.toggle("show-menu");
+}
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-button')) {
+                var dropdowns = document.getElementsByClassName("menu-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show-menu')) {
+                        openDropdown.classList.remove('show-menu');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
